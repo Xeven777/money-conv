@@ -1,33 +1,27 @@
-import { useState } from "react";
+// App.jsx
+import { useState, useEffect } from "react";
+import { exchangeRatesData, fetchExchangeRates } from "./exchangeRatesData";
 
 const Home = () => {
-  const [baseAmount, setBaseAmount] = useState("");
-  const [convertedAmount, setConvertedAmount] = useState("");
+  const [baseAmount, setBaseAmount] = useState("0");
+  const [convertedAmount, setConvertedAmount] = useState("0");
   const [baseCurrency, setBaseCurrency] = useState("USD");
   const [targetCurrency, setTargetCurrency] = useState("EUR");
 
   const convertCurrency = () => {
-    const apiUrl = `https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_bvayG1a9oqSIgB5qdTe4xJf81jtBm7hld4EZX8Yb&currencies=${targetCurrency}&base_currency=${baseCurrency}`;
-
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.data) {
-          const exchangeRate = data.data[targetCurrency];
-          if (exchangeRate !== undefined) {
-            const convertedValue = (baseAmount * exchangeRate).toFixed(2);
-            setConvertedAmount(convertedValue);
-          } else {
-            console.error(
-              `Exchange rate for ${targetCurrency} not found in API response.`
-            );
-          }
-        } else {
-          console.error("Invalid API response format.");
-        }
-      })
-      .catch((error) => console.error(error));
+    const exchangeRate = exchangeRatesData.data[targetCurrency];
+    if (exchangeRate !== undefined) {
+      const convertedValue = (baseAmount * exchangeRate).toFixed(2);
+      setConvertedAmount(convertedValue);
+    } else {
+      console.error(`Exchange rate for ${targetCurrency} not found in data.`);
+    }
   };
+
+  useEffect(() => {
+    fetchExchangeRates();
+  }, []);
+
   return (
     <div>
       <h1>Currency Converter</h1>
@@ -46,8 +40,11 @@ const Home = () => {
           value={baseCurrency}
           onChange={(e) => setBaseCurrency(e.target.value)}
         >
-          <option value="USD">USD</option>
-          {/* Add other currency options as needed */}
+          {Object.keys(exchangeRatesData.data).map((code) => (
+            <option key={code} value={code}>
+              {code}
+            </option>
+          ))}
         </select>
       </div>
 
@@ -67,8 +64,11 @@ const Home = () => {
           value={targetCurrency}
           onChange={(e) => setTargetCurrency(e.target.value)}
         >
-          <option value="EUR">EUR</option>
-          {/* Add other currency options as needed */}
+          {Object.keys(exchangeRatesData.data).map((code) => (
+            <option key={code} value={code}>
+              {code}
+            </option>
+          ))}
         </select>
       </div>
 
