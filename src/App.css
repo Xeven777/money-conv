@@ -1,7 +1,74 @@
 #root {
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
   width: 100%;
   height: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  padding-top: 1.5rem;
+}
+.container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1.5rem;
+}
+.container img {
+  width: 65%;
+  height: auto;
+}
+.inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  text-align: left;
+  padding: 5px;
+}
+input {
+  background: var(--accentdark2);
+  color: aliceblue;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid transparent;
+  box-shadow: 0 3px 8px rgba(112, 130, 136, 0.3);
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:focus {
+  outline: none;
+  border: 1px solid var(--accent2);
+}
+select{
+  background: var(--accentdark2);
+  color: aliceblue;
+  padding: 5px 10px;
+  border-radius:0 0 10px 10px ;
+  border: 1px solid transparent;
+  box-shadow: 0 3px 8px rgba(112, 130, 136, 0.3);
 }

@@ -1,25 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap");
 
 :root {
-  font-family: "Rubik", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Rubik", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgb(26, 26, 26);
-  background-color: #f0f0f0;
-
+  color: rgb(252, 252, 252);
+  background-color: #242424;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  --accent: #2bb7da;
+  --accent2: #00ff80;
+  --accentdark:#107bdf;
+  --accentdark2:rgb(32, 32, 32);
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--accentdark);
   text-decoration: inherit;
 }
 a:hover {
@@ -31,8 +32,8 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
 }
 
@@ -48,7 +49,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color: aliceblue;
+  background:linear-gradient(20deg,var(--accent),var(--accent2));
   cursor: pointer;
   transition: border-color 0.25s;
 }

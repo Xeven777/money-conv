@@ -4,7 +4,7 @@ let exchangeRatesData = {
     data: {},
 };
 const apikey = "fca_live_bvayG1a9oqSIgB5qdTe4xJf81jtBm7hld4EZX8Yb";
-const url = `https://api.freecurrencyapi.com/v1/latest?apikey=${apikey}`;
+const url = `https://api.afreecurrencyapi.com/v1/latest?apikey=${apikey}`;
 
 const fetchExchangeRates = async () => {
     try {
