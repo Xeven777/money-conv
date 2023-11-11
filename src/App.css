@@ -19,7 +19,6 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 1.5rem;
 }
 .container img {
   width: 65%;
@@ -42,14 +41,7 @@ label {
   text-align: left;
   padding: 5px;
 }
-input {
-  background: var(--accentdark2);
-  color: aliceblue;
-  padding: 5px 10px;
-  border-radius: 10px 10px 0 0;
-  border: 1px solid transparent;
-  box-shadow: 0 3px 8px rgba(112, 130, 136, 0.3);
-}
+
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -60,15 +52,29 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input:focus {
-  outline: none;
-  border: 1px solid var(--accent2);
-}
-select{
+
+select,
+input {
   background: var(--accentdark2);
   color: aliceblue;
   padding: 5px 10px;
-  border-radius:0 0 10px 10px ;
+  font-size: clamp(1rem ,1.2vw,1.3rem);
   border: 1px solid transparent;
-  box-shadow: 0 3px 8px rgba(112, 130, 136, 0.3);
+  box-shadow: 0 3px 8px rgba(114, 137, 145, 0.3);
+}
+select {
+  border-radius: 0 0 10px 10px;
+}
+input {
+  border-radius: 10px 10px 0 0;
+}
+#ccopt:focus,
+#convertedAmount:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+#bcopt:focus,
+#baseAmount:focus {
+  outline: none;
+  border-color: var(--accent2);
 }

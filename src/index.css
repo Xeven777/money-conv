@@ -5,7 +5,6 @@
   line-height: 1.5;
   font-weight: 400;
   color: rgb(252, 252, 252);
-  background-color: #242424;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,27 +13,28 @@
   text-size-adjust: 100%;
   --accent: #2bb7da;
   --accent2: #00ff80;
-  --accentdark:#107bdf;
-  --accentdark2:rgb(32, 32, 32);
+  --accentdark2:rgb(29, 29, 29);
 }
 
 a {
   font-weight: 500;
-  color: var(--accentdark);
+  color: var(--accent2);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--accent);
+  cursor: crosshair;
 }
 
 body {
   margin: 0;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background: linear-gradient(70deg, #131a1b, rgb(18, 32, 41), #131a1b);
 }
 
 h1 {
@@ -45,17 +45,18 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.6em 1.3em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   color: aliceblue;
   background:linear-gradient(20deg,var(--accent),var(--accent2));
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s ease-in-out;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--accent2);
+  transform: translate(0, -2px) scale(1.05);
 }
 button:focus,
 button:focus-visible {
@@ -68,7 +69,7 @@ button:focus-visible {
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: var(--accent);
   }
   button {
     background-color: #f9f9f9;
