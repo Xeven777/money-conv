@@ -1,17 +1,25 @@
 // App.jsx
 import { useState, useEffect } from "react";
 import { exchangeRatesData, fetchExchangeRates } from "./exchangeRatesData";
+import currencyCodes from "./currencyCodes";
 
 const Home = () => {
-  const [baseAmount, setBaseAmount] = useState("0");
-  const [convertedAmount, setConvertedAmount] = useState("0");
+  const [baseAmount, setBaseAmount] = useState("1");
+  const [convertedAmount, setConvertedAmount] = useState("1");
   const [baseCurrency, setBaseCurrency] = useState("USD");
   const [targetCurrency, setTargetCurrency] = useState("EUR");
 
   const convertCurrency = () => {
-    const exchangeRate = exchangeRatesData.data[targetCurrency];
-    if (exchangeRate !== undefined) {
-      const convertedValue = (baseAmount * exchangeRate).toFixed(2);
+    const exchangeRateTarget = exchangeRatesData.data[targetCurrency]; //1usd=0.89 eur
+    const exchangeRateBase = exchangeRatesData.data[baseCurrency]; //1usd =83inr
+    //0.89 euro = 83 inr
+    //1eur = 83/0.89
+    //1inr = 0.89/83
+    if (exchangeRateBase !== undefined) {
+      const convertedValue = (
+        baseAmount *
+        (exchangeRateTarget / exchangeRateBase)
+      ).toFixed(3); //70inr=(0.89/83)*70
       setConvertedAmount(convertedValue);
     } else {
       console.error(`Exchange rate for ${targetCurrency} not found in data.`);
@@ -40,9 +48,9 @@ const Home = () => {
           value={baseCurrency}
           onChange={(e) => setBaseCurrency(e.target.value)}
         >
-          {Object.keys(exchangeRatesData.data).map((code) => (
+          {Object.keys(currencyCodes).map((code) => (
             <option key={code} value={code}>
-              {code}
+              {code} - {currencyCodes[code]}
             </option>
           ))}
         </select>
@@ -56,7 +64,6 @@ const Home = () => {
           name="convertedAmount"
           value={convertedAmount}
           readOnly
-          disabled
         />
         <select
           name="targetCurrency"
@@ -64,9 +71,9 @@ const Home = () => {
           value={targetCurrency}
           onChange={(e) => setTargetCurrency(e.target.value)}
         >
-          {Object.keys(exchangeRatesData.data).map((code) => (
+          {Object.keys(currencyCodes).map((code) => (
             <option key={code} value={code}>
-              {code}
+              {code} - {currencyCodes[code]}
             </option>
           ))}
         </select>
