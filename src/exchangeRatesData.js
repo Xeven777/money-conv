@@ -1,9 +1,7 @@
-// exchangeRatesData.js
-
 let exchangeRatesData = {
     data: {},
 };
-const apikey = "";
+const apikey = import.meta.env.VITE_APP_APIKEY;
 const url = `https://api.freecurrencyapi.com/v1/latest?apikey=${apikey}`;
 
 const fetchExchangeRates = async () => {

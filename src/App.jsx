@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { exchangeRatesData, fetchExchangeRates } from "./exchangeRatesData";
 import currencyCodes from "./currencyCodes";
 import "./App.css";
-import hero from"./hero.svg";
+import hero from "./hero.svg";
 
 const Home = () => {
   const currentTime = new Date();
@@ -16,16 +16,13 @@ const Home = () => {
   const [targetCurrency, setTargetCurrency] = useState("EUR");
 
   const convertCurrency = () => {
-    const exchangeRateTarget = exchangeRatesData.data[targetCurrency]; //1usd=0.89 eur
-    const exchangeRateBase = exchangeRatesData.data[baseCurrency]; //1usd =83inr
-    //0.89 euro = 83 inr
-    //1eur = 83/0.89
-    //1inr = 0.89/83
+    const exchangeRateTarget = exchangeRatesData.data[targetCurrency];
+    const exchangeRateBase = exchangeRatesData.data[baseCurrency];
     if (exchangeRateBase !== undefined) {
       const convertedValue = (
         baseAmount *
         (exchangeRateTarget / exchangeRateBase)
-      ).toFixed(3); //70inr=(0.89/83)*70
+      ).toFixed(3);
       setConvertedAmount(convertedValue);
     } else {
       console.error(`Exchange rate for ${targetCurrency} not found in data.`);
@@ -40,7 +37,7 @@ const Home = () => {
     <>
       <div className="container">
         <h1>Currency Converter</h1>
-        <img src={hero} alt="currency"/>
+        <img src={hero} alt="currency" />
         <div className="inputs">
           <div className="box">
             <label htmlFor="baseAmount">Base Amount:</label>
